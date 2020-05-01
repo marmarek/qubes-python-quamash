@@ -12,7 +12,11 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{mod_name}}
 # import fails without at least one pyqt implementation installed
+%if 0%{?rhel} >= 8 || 0%{?fedora} >= 32
+BuildRequires:  python%{python3_pkgversion}-PyQt5
+%else
 BuildRequires:  python%{python3_pkgversion}-PyQt4
+%endif
 BuildArch:      noarch
 
 %description
